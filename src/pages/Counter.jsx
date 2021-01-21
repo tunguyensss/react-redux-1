@@ -5,23 +5,28 @@ import Button from '../components/Counter/Button';
 function Counter() {
   const count = useSelector((state) => state.counter.count);
 
-  console.log(count);
-
   const btnActions = [
-    { name: 'increment', action: 'increment' },
-    { name: 'decrement', action: 'decrement' },
-    { name: 'reset', action: 'reset' },
+    { name: 'increment', action: 'increment', color: 'green' },
+    { name: 'decrement', action: 'decrement', color: 'red' },
+    { name: 'reset', action: 'reset', color: 'gray' },
   ];
 
   const btnActionsList = btnActions.map((item) => (
-    <Button name={item.name} action={item.action} key={item.name} />
+    <Button
+      name={item.name}
+      action={item.action}
+      key={item.name}
+      color={item.color}
+    />
   ));
 
   return (
     <div>
-      <h1>{count}</h1>
+      <div className='container mx-auto my-8'>
+        <h1 className='text-8xl font-semibold text-center'>{count}</h1>
 
-      <div className=''>{btnActionsList}</div>
+        <div className='flex justify-center items-center'>{btnActionsList}</div>
+      </div>
     </div>
   );
 }
